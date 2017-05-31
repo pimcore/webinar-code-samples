@@ -1,0 +1,9 @@
+{% extends ':WebinarDemo:layout.html.twig' %}
+
+{% block content %}
+    <p>We're currently looking at the output of</p>
+    <pre style="color: {{ color }}">{{ method }}</pre>
+    <p>rendered through the <code>Twig</code> engine.</p>
+
+    <p>{{ "This is a translated message."|trans }}</p>
+{% endblock %}

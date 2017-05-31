@@ -1,0 +1,45 @@
+{% extends ':WebinarDemo:layout.html.twig' %}
+
+{% block content %}
+    <p>We're currently looking at the output of</p>
+    <pre style="color: {{ color }}">{{ method }}</pre>
+    <p>rendered through the <code>Twig</code> engine.</p>
+
+    <p>{{ "This is a translated message."|trans }}</p>
+
+    <div class="alert alert-success">
+        The current document has the ID <code>{{ document.getId() }}</code>
+        and the path <code>{{ document.getRealFullPath() }}</code>.
+    </div>
+
+    <h3 style="margin-top: 50px">Editable Demo</h3>
+
+    {% for i in pimcore_iterate_block(pimcore_block('cards')) %}
+
+        <div class="card" style="margin-top: 25px">
+            <div class="card-header">
+                {{ pimcore_input('card-header') }}
+            </div>
+            <div class="card-block">
+                <div class="row">
+
+                    <div class="col-md-4">
+                        {{ pimcore_image('card-image', {
+                            thumbnail: 'galleryThumbnail'
+                        }) }}
+                    </div>
+
+                    <div class="col-md-8">
+                        {{ pimcore_wysiwyg('card-text') }}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+{% endblock %}
+
+
+
+
