@@ -1,0 +1,15 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+config_info:
+    path:     /config/info
+    defaults: { _controller: AppBundle:Demo:info }
+
+config_hello:
+    path:     /config/hello/{name}
+    defaults: { _controller: AppBundle:Demo:hello }
+
+config_request_info:
+    path:     /config/request-info
+    defaults: { _controller: AppBundle\Controller\DemoServiceController:requestInfoAction }

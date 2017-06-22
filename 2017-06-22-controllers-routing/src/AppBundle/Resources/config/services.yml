@@ -1,0 +1,25 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+
+    # this service is requested by the service controller on the action level
+    AppBundle\DateProvider:
+        class: AppBundle\DateProvider
+
+    # the following controller is defined as service and has a dependency
+    # on a custom logger logging into the "my_controller" channel
+    AppBundle\Controller\DemoServiceController:
+        class: AppBundle\Controller\DemoServiceController
+        arguments: ['@logger']
+        public: true
+        tags:
+            # the controller.service_arguments tag is important to allow action based injection
+            # and for pimcore to list the controller as service in controller selects
+            - { name: 'controller.service_arguments' }
+
+            # use a logger with a custom logging channel
+            - { name: 'monolog.logger', channel: 'my_controller' }
