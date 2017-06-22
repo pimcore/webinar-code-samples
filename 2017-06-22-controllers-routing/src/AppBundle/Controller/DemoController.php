@@ -15,6 +15,12 @@ class DemoController extends FrontendController
      */
     public function infoAction(Request $request)
     {
+        // log what we're doing
+        $logger = $this->get('logger');
+        $logger->info('Creating response for request {pathInfo}', [
+            'pathInfo' => $request->getPathInfo()
+        ]);
+
         return $this->render('Demo/info.html.twig', [
             'title' => __METHOD__,
             'data'  => [
@@ -23,6 +29,8 @@ class DemoController extends FrontendController
                 'host'       => $request->getHttpHost(),
                 'path'       => $request->getPathInfo(),
                 'query'      => $request->query->all(),
+
+                // the document is available as $this->document
                 'document'   => $this->document->getRealFullPath(),
             ]
         ]);
