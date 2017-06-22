@@ -16,6 +16,58 @@
             {% block content %}{% endblock %}
         </div>
     </div>
+
+    <div class="row mt-5">
+        {% set types = {
+            staticroute: 'Static Route',
+            config: 'Configuration File',
+            annotation: 'Annotation'
+        } %}
+
+        <div class="col">
+            <div class="card">
+                <div class="card-block">
+                    <h4 class="card-title">Document</h4>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="/document/info" class="card-link">Info</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="/document/hello?name=Webinar" class="card-link">Hello</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="/document/request-info?foo=bar" class="card-link">Request Info (defined as service)</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {% for type, title in types %}
+
+            <div class="col">
+                <div class="card">
+                    <div class="card-block">
+                        <h4 class="card-title">{{ title }}</h4>
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <a href="{{ path(type ~ '_info') }}" class="card-link">Info</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ path(type ~ '_hello', { name: 'Webinar' }) }}" class="card-link">Hello</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ path(type ~ '_request_info', { foo: 'bar' }) }}" class="card-link">Request Info (defined as service)</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
 </div>
 
 </body>

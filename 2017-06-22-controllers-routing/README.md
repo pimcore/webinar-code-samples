@@ -5,4 +5,5 @@ To use the same documents as shown in the demo either import [`data.sql`](./data
 | Path                    | Bundle    | Controller                                    | Action      |
 |-------------------------|-----------|-----------------------------------------------|-------------|
 | /documents/info         | AppBundle | Demo                                          | info        |
+| /documents/hello        | AppBundle | Demo                                          | hello       |
 | /documents/request-info |           | @AppBundle\\Controller\\DemoServiceController | requestInfo |
